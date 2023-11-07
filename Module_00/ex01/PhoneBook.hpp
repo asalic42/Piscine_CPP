@@ -5,33 +5,50 @@
 # include <string>
 # include <cstring>
 # include <stdio.h>
+# include <limits>
+# include <cstdlib>
 
-class Contact{
+//Faire Contact.hpp
+class Contact
+{
+    public:
+        Contact(void);
+        ~Contact(void);
 
-public:
+        void            new_contact();
 
-    char name[10];
-    char lastname[10];
-    char nickname[10];
-    char phone_number[10];
-    char darkest_secret[10];
+        std::string     get_name();
+        std::string     get_lastname();
+        std::string     get_nickname();
+        std::string     get_phone();
+        std::string     get_secret();
 
-    Contact(void);
-    ~Contact(void);
+        void	        set_name(std::string str);
+        void	        set_lastname(std::string str);
+        void	        set_nickname(std::string str);
+        void	        set_phone(std::string str);
+        void	        set_secret(std::string str);
 
-    void    new_contact();
+    private:
+        std::string     name;
+        std::string     lastname;
+        std::string     nickname;
+        std::string     phone_number;
+        std::string     darkest_secret;
 };
 
-class PhoneBook {
+class PhoneBook
+{
+    public:
+        PhoneBook(void);
+        ~PhoneBook(void);
+    
+        void    add();
+        void    index_stuff(int len);
+        void    search();
 
-public:
-    PhoneBook(void);
-    ~PhoneBook(void);
-
-    Contact		contact[8];
-  
-    void    add();
-    void    search();
+    private:
+        Contact		contact[8];
 };
 
 #endif

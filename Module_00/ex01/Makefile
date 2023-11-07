@@ -6,15 +6,15 @@
 #    By: asalic <asalic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:35:01 by asalic            #+#    #+#              #
-#    Updated: 2023/11/06 11:06:10 by asalic           ###   ########.fr        #
+#    Updated: 2023/11/07 15:52:10 by asalic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
+NAME = phonebook
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = PhoneBook.cpp main.cpp
+SRCS = PhoneBook.cpp main.cpp Contact.cpp
 OBJDIR = obj
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:%.cpp=%.o))
 
