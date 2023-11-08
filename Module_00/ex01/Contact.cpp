@@ -56,7 +56,6 @@ void	Contact::set_secret(std::string str)
 // Constructeur de la classe Contact
 Contact::Contact()
 {
-    std::cout << "Je construis l'instance contact" << std::endl;
 }
 
 // Fonction utile a new_contact()
@@ -148,13 +147,10 @@ void    Contact::new_contact()
 		var = enter_contact("Phone number   : ");
 	set_phone(var);
 	var = enter_contact("Darkest secret : ");
-	while (!is_digit_in_str(var))
-		var = enter_contact("Darkest secret : ");
 	set_secret(var);
 }
 
 // Destructeur de la classe Contact
 Contact::~Contact()
 {
-    std::cout << "Je detruis l'instance" << std::endl;
 }

@@ -3,7 +3,6 @@
 // Constructeur de la classe PhoneBook
 PhoneBook::PhoneBook()
 {
-    std::cout << "Je construis l'instance" << std::endl;
 }
 
 /*  Methode de la classe PhoneBook
@@ -159,6 +158,6 @@ void    PhoneBook::search()
 }
 
 //Destructeur de PhoneBook
-PhoneBook::~PhoneBook(){
-    std::cout << "Je detruis l'instance" << std::endl;
+PhoneBook::~PhoneBook()
+{
 }
