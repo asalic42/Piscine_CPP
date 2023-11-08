@@ -1,8 +1,16 @@
 #include "PhoneBook.hpp"
 
 // Constructeur de la classe PhoneBook
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook() : remplace(0) {}
+
+int PhoneBook::get_remp()
 {
+    return (this->remplace);
+}
+
+void    PhoneBook::set_remp(int place)
+{
+    this->remplace = place;
 }
 
 /*  Methode de la classe PhoneBook
@@ -12,8 +20,16 @@ void    PhoneBook::add()
 {
     int i=0;
 
-    while (!this->contact[i].get_name().empty())
+    while (i < MAX_VALUE && !this->contact[i].get_name().empty())
         i ++;
+    if (i == MAX_VALUE)
+    {
+        if (get_remp() == MAX_VALUE)
+            set_remp(0);
+        this->contact[get_remp()].new_contact();
+        set_remp(get_remp() +1);
+        return ;
+    }
     this->contact[i].new_contact();
 }
 
@@ -137,7 +153,7 @@ void    PhoneBook::search()
     std::cout << "\n\t┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
     std::cout << "\t│     \x1b[36;1mIndex\x1b[0m│      \x1b[36;1mName\x1b[0m│  \x1b[36;1mLastname\x1b[0m│  \x1b[36;1mNickname\x1b[0m│" << std::endl;
     std::cout << "\t├──────────┼──────────┼──────────┼──────────┤" << std::endl;
-    while (!contact[i].get_name().empty())
+    while (i < MAX_VALUE && !contact[i].get_name().empty())
     {
         std::cout << "\t│         " << i + 1 << "│";
         add_space(contact[i].get_name());
