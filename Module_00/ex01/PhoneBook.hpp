@@ -9,7 +9,7 @@
 # include <cstdlib>
 
 # include "Contact.hpp"
-# define MAX_VALUE 3
+# define MAX_VALUE 8
 
 class PhoneBook
 {
