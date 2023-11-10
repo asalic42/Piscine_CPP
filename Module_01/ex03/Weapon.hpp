@@ -5,20 +5,21 @@
 # include <string>
 # include <cstdlib>
 # include <cstring>
-# include "HumanA.hpp"
-# include "HumanB.hpp"
 
 class Weapon
 {
     public:
         Weapon(std::string _type);
-        ~Weapon(void) {};
+        ~Weapon(void);
 
-        std::string&    getType();
-        void            setType(std::string type);
+        const std::string&      getType(void) const ;
+        void                    setType(const std::string& value);
     
     private:
         std::string type;
 };
+
+# include "HumanA.hpp"
+# include "HumanB.hpp"
 
 #endif
