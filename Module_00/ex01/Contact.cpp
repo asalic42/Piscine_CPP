@@ -79,6 +79,16 @@ bool	is_digit_in_str(std::string str)
 	return true;
 }
 
+bool	is_something(std::string str)
+{
+	if (str[0] == '\0')
+	{
+		std::cout << "\t\x1b[31;1mERROR : Please, enter something.\x1b[0m" << std::endl;
+		return false;
+	}
+	return true;
+}
+
 // Fonction utils a new_contact()
 // Check si le champs "phone number" est a la norme
 // Si c'est bien que des chiffres, 10 caracteres, pas plus pas moins
@@ -86,11 +96,8 @@ bool	is_str_in_digit(std::string str)
 {
 	int i=0;
 
-	if (str[0] == '\0')
-	{
-		std::cout << "\t\x1b[31;1mERROR : Please, enter something.\x1b[0m" << std::endl;
+	if (!is_something(str))
 		return false;
-	}
 	while (str[i])
     {
         if (!std::isdigit(str[i]))
@@ -147,6 +154,8 @@ void    Contact::new_contact()
 		var = enter_contact("Phone number   : ");
 	set_phone(var);
 	var = enter_contact("Darkest secret : ");
+	while (!is_something(var))
+		var = enter_contact("Darkest secret : ");
 	set_secret(var);
 }
 

@@ -39,8 +39,7 @@ void    add_space(std::string str)
 {
     int i=0;
 
-    while (str[i])
-        i ++;
+    i = str.length();
     while (10-i > 0)
     {
         std::cout << " ";
@@ -118,21 +117,11 @@ void    PhoneBook::index_stuff(int len)
 */
 void is_more_than_ten(std::string str)
 {
-    int         i=0;
-
-    while (str[i])
-    {
-        if (i == 9)
-        {
-            if (str[i+1])
-                std::cout << ".";
-            else
-                std::cout << str[i];
-            return ;
-        }
-        std::cout << str[i];
-        i ++;
-    }
+    add_space(str);
+    if (str.length() <= 10)
+        std::cout << str;
+    else
+        std::cout << str.substr(0, 9) << ".";
 }
 
 /*  Methode search() de la classe PhoneBook
@@ -156,20 +145,15 @@ void    PhoneBook::search()
     while (i < MAX_VALUE && !contact[i].get_name().empty())
     {
         std::cout << "\t│         " << i + 1 << "│";
-        add_space(contact[i].get_name());
         is_more_than_ten(contact[i].get_name());
         std::cout << "│" ;
-        add_space(contact[i].get_lastname());
         is_more_than_ten(contact[i].get_lastname());
         std::cout << "│" ;
-        add_space(contact[i].get_nickname());
         is_more_than_ten(contact[i].get_nickname());
-        std::cout << "│" ;
-        std::cout << std::endl;
+        std::cout << "│" << std::endl;
         i ++;
     }
     std::cout << "\t└──────────┴──────────┴──────────┴──────────┘" << std::endl;
-    
     index_stuff(i);
 }
 

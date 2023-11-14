@@ -23,6 +23,8 @@ int main(void)
 
 	system("clear");
 	welcome_phonebook();
+	if (MAX_VALUE <= 0)
+		std::cout << "\t\x1b[31;1mERROR : Maccro 'MAX_VALUE' not valid" << std::endl; 
 	while (cmd != "EXIT")
 	{
     	std::cout << "\t\tADD, SEARCH or EXIT ?\n" << std::endl;

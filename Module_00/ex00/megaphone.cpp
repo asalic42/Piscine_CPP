@@ -1,17 +1,12 @@
 #include <iostream>
-#include <string>
-using namespace std;
+# include <string>
+# include <cctype>
 
-void alpha_up(char *str)
+void alpha_up(std::string typechar)
 {
-    int i=0;
-
-    while (str[i])
+    for (std::size_t i=0; i < typechar.length(); i++)
     {
-        if (str[i] >= 97 && str[i] <= 122)
-            str[i] = str[i] - 32;
-        std::cout << str[i];
-        i ++;
+        std::cout << (char) std::toupper(typechar[i]);
     }
 }
 
