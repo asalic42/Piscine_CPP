@@ -1,6 +1,6 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name), _weapon()
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
     std::cout << "\x1b[35;1mHumanB Constructor\x1b[0m" << std::endl;
 }
