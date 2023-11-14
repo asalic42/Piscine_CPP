@@ -19,5 +19,5 @@ Zombie::Zombie(void) {};
 
 Zombie::~Zombie(void)
 {
-    std::cout << this->name << " Destroyed" << std::endl;
+    std::cout << "\x1b[31;1m" << this->name << " Destroyed\x1b[0m" << std::endl;
 };
