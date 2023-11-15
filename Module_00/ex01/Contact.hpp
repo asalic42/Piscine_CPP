@@ -10,7 +10,7 @@ class Contact
         Contact(void);
         ~Contact(void);
 
-        void            new_contact();
+        int            new_contact();
 
         std::string     get_name();
         std::string     get_lastname();

@@ -117,14 +117,27 @@ bool	is_str_in_digit(std::string str)
 
 // Fonction utile a new_contact()
 // Affiche les champs a remplir et demande une entree
-std::string	enter_contact(std::string phrase)
+int	enter_contact(std::string phrase, std::string& var)
 {
-	std::string var;
-
 	std::cout << phrase;
-	if (!std::getline(std::cin, var))
-		std::exit(1);
-	return (var);
+	if (!std::getline(std::cin, var) || std::cin.eof())
+	{
+		std::cout << "\n\x1b[31;1mERROR\x1b[0m\n" << std::endl;
+		return 1;
+	}
+	return 0;
+}
+
+int	enter_loop(std::string& var, std::string str)
+{
+	if (enter_contact(str, var))
+		return 1;
+	while (!is_digit_in_str(var))
+	{
+		if (enter_contact(str, var))
+			return 1;
+	}
+	return 0;
 }
 
 /* 	Methode de la classe Contact
@@ -133,30 +146,31 @@ std::string	enter_contact(std::string phrase)
 	Check si les caracteres sont valides ou non.
 	Si non, renvoit une erreur et redemande le champs en question
 */
-void    Contact::new_contact()
+int    Contact::new_contact()
 {
 	std::string var;
 
-    var = enter_contact("Name           : ");
-	while (!is_digit_in_str(var))
-		var = enter_contact("Name           : ");
+    if (enter_loop(var, "Name           : "))
+		return 1;
 	set_name(var);
-	var = enter_contact("Lastname       : ");
-	while (!is_digit_in_str(var))
-		var = enter_contact("Lastname       : ");
+	if (enter_loop(var, "Lastname       : "))
+		return 1;
 	set_lastname(var);
-	var = enter_contact("Nickname       : ");
-	while (!is_digit_in_str(var))
-		var = enter_contact("Nickname       : ");
+	if (enter_loop(var, "Nickname       : "))
+		return 1;
 	set_nickname(var);
-	var = enter_contact("Phone number   : ");
+	if (enter_contact("Phone number   : ", var))
+		return 1;
 	while (!is_str_in_digit(var))
-		var = enter_contact("Phone number   : ");
+	{
+		if (enter_contact("Phone number   : ", var))
+			return 1;
+	}
 	set_phone(var);
-	var = enter_contact("Darkest secret : ");
-	while (!is_something(var))
-		var = enter_contact("Darkest secret : ");
+	if (enter_loop(var, "Darkest secret : "))
+		return 1;
 	set_secret(var);
+	return 0;
 }
 
 // Destructeur de la classe Contact

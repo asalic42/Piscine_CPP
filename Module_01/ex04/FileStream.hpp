@@ -6,9 +6,7 @@
 # include <cstring>
 # include <string>
 
-
-bool    is_file_good(std::string& filename);
-bool    is_same(const char *s1, const char *s2, const char *line);
-void    replace_file(const char *str);
+int    read_srcfile(std::string& content_file, const std::string src_file);
+int    write_repfile(const std::string content_file, const std::string src_file);
 
 #endif

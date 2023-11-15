@@ -16,7 +16,7 @@ void    PhoneBook::set_remp(int place)
 /*  Methode de la classe PhoneBook
     Ajoute un contact au repertoire
 */
-void    PhoneBook::add()
+int    PhoneBook::add()
 {
     int i=0;
 
@@ -26,11 +26,14 @@ void    PhoneBook::add()
     {
         if (get_remp() == MAX_VALUE)
             set_remp(0);
-        this->contact[get_remp()].new_contact();
+        if (this->contact[get_remp()].new_contact())
+            return 1;
         set_remp(get_remp() +1);
-        return ;
+        return 0;
     }
-    this->contact[i].new_contact();
+    if (this->contact[i].new_contact())
+        return 1;
+    return 0;
 }
 
 // Fonction utile a search()
@@ -76,15 +79,18 @@ bool is_it_digit(std::string& str, int len)
     Check si il est valide: -> si oui, affiche les infos du contact
                             -> si non, redemande un index
 */
-void    PhoneBook::index_stuff(int len)
+int    PhoneBook::index_stuff(int len)
 {
     std::string i_var;
     int         nb;
 
     std::cout << std::endl;
     std::cout << "\x1b[1mIndex : \x1b[0m";
-    if (!std::getline(std::cin, i_var))
-        std::exit(1);
+    if (!std::getline(std::cin, i_var) || std::cin.eof())
+    {
+        std::cout << "\x1b[31;1mERROR\x1b[0m" << std::endl;
+        return 1;
+    }
     if (is_it_digit(i_var, len))
     {
         nb = string_to_int(i_var) -1;
@@ -96,19 +102,27 @@ void    PhoneBook::index_stuff(int len)
         while (i_var != "Y" && i_var != "N")
         {
             std::cout << "\n └────────> Another index ? (Y/N)";
-            if (!std::getline(std::cin, i_var))
-                std::exit(1);
+            if (!std::getline(std::cin, i_var) || std::cin.eof())
+            {
+                std::cout << "\x1b[31;1mERROR\x1b[0m" << std::endl;
+                return 1;
+            }
             if (i_var == "N")
-                return ;
+                return 0;
             else if (i_var == "Y")
-                index_stuff(len);
+            {
+                if (index_stuff(len))
+                    return 1;
+            }
         }
     }
     else
     {
         std::cout << "\x1b[31;1mERROR : Invalid index.\x1b[0m" << std::endl;
-        index_stuff(len);
+        if (index_stuff(len))
+            return 1;
     }
+    return 0;
 }
 /*  Fonction utile a search()
     Check si, lors de l'affichage, la string ne depasse pas 10 caracteres.
@@ -129,7 +143,7 @@ void is_more_than_ten(std::string str)
     Propose des index pour afficher toutes les informations du contact lie 
         a l'index demande par l'utilisateur
 */
-void    PhoneBook::search()
+int    PhoneBook::search()
 {
     int i=0;
 
@@ -137,7 +151,7 @@ void    PhoneBook::search()
     {
         std::cout << std::endl;
         std::cout << "\t\x1b[32;1mNo contacts registered in the phonebook, please create a new one.\x1b[0m\n" << std::endl;
-        return ;
+        return 0;
     }
     std::cout << "\n\t┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
     std::cout << "\t│     \x1b[36;1mIndex\x1b[0m│      \x1b[36;1mName\x1b[0m│  \x1b[36;1mLastname\x1b[0m│  \x1b[36;1mNickname\x1b[0m│" << std::endl;
@@ -154,7 +168,9 @@ void    PhoneBook::search()
         i ++;
     }
     std::cout << "\t└──────────┴──────────┴──────────┴──────────┘" << std::endl;
-    index_stuff(i);
+    if (index_stuff(i))
+        return 1;
+    return 0;
 }
 
 //Destructeur de PhoneBook

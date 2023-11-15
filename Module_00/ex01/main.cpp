@@ -21,6 +21,7 @@ int main(void)
     PhoneBook	repertoire;
     std::string cmd;
 
+	std::signal(SIGINT, SIG_IGN);
 	system("clear");
 	welcome_phonebook();
 	if (MAX_VALUE <= 0)
@@ -29,13 +30,22 @@ int main(void)
 	{
 		std::cout << "\t\tADD, SEARCH or EXIT ?\n" << std::endl;
 		std::cout << "> ";
-		if (!std::getline(std::cin, cmd))
-			break;
+		if (!std::getline(std::cin, cmd) || std::cin.eof())
+		{
+			std::cout << "\x1b[31;1mERROR\x1b[0m" << std::endl;
+			return 1;
+		}
 		std::cout << std::endl;
 		if (cmd == "ADD")
-			repertoire.add();
+		{
+			if (repertoire.add())
+				return 1;
+		}
 		else if (cmd == "SEARCH")
-			repertoire.search();
+		{
+			if (repertoire.search())
+				return 1;
+		}
 	}
     return (0);
 }

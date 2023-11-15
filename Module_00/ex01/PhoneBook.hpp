@@ -7,6 +7,7 @@
 # include <stdio.h>
 # include <limits>
 # include <cstdlib>
+# include <csignal>
 
 # include "Contact.hpp"
 # define MAX_VALUE 8
@@ -20,9 +21,9 @@ class PhoneBook
         int     get_remp();
         void    set_remp(int place);
 
-        void    add();
-        void    index_stuff(int len);
-        void    search();
+        int     add();
+        int     index_stuff(int len);
+        int     search();
 
     private:
         Contact		contact[MAX_VALUE];
