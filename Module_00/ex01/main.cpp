@@ -27,7 +27,7 @@ int main(void)
 		std::cout << "\t\x1b[31;1mERROR : Maccro 'MAX_VALUE' not valid" << std::endl; 
 	while (cmd != "EXIT")
 	{
-    	std::cout << "\t\tADD, SEARCH or EXIT ?\n" << std::endl;
+		std::cout << "\t\tADD, SEARCH or EXIT ?\n" << std::endl;
 		std::cout << "> ";
 		if (!std::getline(std::cin, cmd))
 			break;
