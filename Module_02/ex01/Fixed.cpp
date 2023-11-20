@@ -11,19 +11,20 @@ Fixed::Fixed(const Fixed& copy)
     *this = copy;
 }
 
-Fixed::Fixed(const int valueInt) : _fixedValue(static_cast<int>(valueInt*100.0))
+Fixed::Fixed(const int valueInt)
 {
     std::cout << "Int Constructor called" << std::endl;
+    this->_fixedValue = valueInt * (1 << _bits);
 }
 
-Fixed::Fixed(const float valueFloat) : _fixedValue(static_cast<float>(valueFloat*100.0f))
+Fixed::Fixed(const float valueFloat)
 {
     std::cout << "Float Constructor called" << std::endl;
+    this->_fixedValue = roundf(valueFloat * (1 << _bits));
 }
 
 int     Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return (_fixedValue);
 }
 
@@ -34,13 +35,13 @@ void    Fixed::setRawBits(int const raw)
 
 int     Fixed::toInt(void) const
 {
-    int   fixedToInt = _fixedValue / 100.0 ;
+    int   fixedToInt = this->_fixedValue >> this->_bits;
     return (fixedToInt);
 }
 
 float   Fixed::toFloat(void) const
 {
-    float   fixedToFloat = _fixedValue/100.0f;
+    float   fixedToFloat = _fixedValue / (float)(1 << _bits);
     return (fixedToFloat);
 }
 
