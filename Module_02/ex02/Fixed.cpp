@@ -107,14 +107,13 @@ Fixed   Fixed::operator-(Fixed& instance)
 
 Fixed   Fixed::operator/(Fixed& instance)
 {
-    this->_fixedValue /= instance.getRawBits(); //wtf?!
+    this->_fixedValue /= instance.getRawBits() >> _bits; //wtf?!
     return *this;
 }
 
-Fixed   Fixed::operator*(Fixed& instance)
+Fixed   Fixed::operator*(const Fixed& instance)
 {
-    std::cout << instance.getRawBits() << std::endl; //wtf?!
-    this->_fixedValue *= instance.getRawBits();
+    this->_fixedValue *= instance.getRawBits() >> _bits;
     return *this;
 }
 

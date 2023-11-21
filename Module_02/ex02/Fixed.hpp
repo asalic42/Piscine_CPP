@@ -31,7 +31,7 @@ class Fixed
 		bool	operator!=(const Fixed& instance);
 
         Fixed   operator+(Fixed& instance);
-        Fixed	operator*(Fixed& instance);
+        Fixed	operator*(const Fixed& instance);
 		Fixed	operator-(Fixed& instance);
 		Fixed	operator/(Fixed& instance);
 
