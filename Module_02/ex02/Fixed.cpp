@@ -107,7 +107,12 @@ Fixed   Fixed::operator-(Fixed& instance)
 
 Fixed   Fixed::operator/(Fixed& instance)
 {
-    this->_fixedValue /= instance.getRawBits() >> _bits; //wtf?!
+    if (instance.getRawBits() >> _bits == 0)
+    {
+        std::cout << "\x1b[1;31mError : Division par 0\x1b[1m" << std::endl;
+        return (0);
+    }
+    this->_fixedValue /= instance.getRawBits() >> _bits;
     return *this;
 }
 
@@ -117,6 +122,34 @@ Fixed   Fixed::operator*(const Fixed& instance)
     return *this;
 }
 
+//Operateurs d'incrementation et de decrementation
+Fixed&  Fixed::operator++()
+{
+    this->_fixedValue++;
+    return *this;
+}
+
+Fixed   Fixed::operator++(int)
+{
+    Fixed   saveFixed = *this;
+    ++this->_fixedValue;
+    return saveFixed;
+}
+
+Fixed&  Fixed::operator--()
+{
+    this->_fixedValue++;
+    return *this;
+}
+
+Fixed   Fixed::operator--(int)
+{
+    Fixed   saveFixed = *this;
+    ++this->_fixedValue;
+    return saveFixed;
+}
+
+//Operateur de redirection -> affichage sortie standard
 std::ostream&    operator<<(std::ostream& out, const Fixed& instance)
 {
     out << instance.toFloat();
