@@ -23,6 +23,7 @@ class Fixed
 		int		toInt(void) const;
 
 		Fixed&	operator=(const Fixed& bis);
+	
 		bool	operator>(const Fixed& instance);
 		bool	operator>=(const Fixed& instance);
 		bool	operator<(const Fixed& instance);
@@ -39,6 +40,11 @@ class Fixed
 		Fixed	operator++(int);
 		Fixed&	operator--();
 		Fixed	operator--(int);
+
+		static Fixed		min(Fixed &fixedOne, Fixed &fixedTwo);
+		static Fixed 		max(Fixed &fixedOne, Fixed &fixedTwo);
+		const static Fixed 	min(const Fixed &fixedOne, const Fixed &fixedTwo);
+		const static Fixed  max(const Fixed &fixedOne, const Fixed &fixedTwo);
 
 };
 
