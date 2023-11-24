@@ -6,34 +6,34 @@
 #    By: asalic <asalic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 12:13:09 by asalic            #+#    #+#              #
-#    Updated: 2023/11/24 12:27:31 by asalic           ###   ########.fr        #
+#    Updated: 2023/11/24 16:32:26 by asalic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = DiamondTrap
-CXX	 = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-LIBS	 = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+NAME 			= DiamondTrap
+CXX	 			= c++
+CXXFLAGS 		= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+LIBS	 		= ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
-SRCS	 = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
-OBJDIR	 = obj
-OBJ		 = $(addprefix $(OBJDIR)/, $(SRCS:%.cpp=%.o))
+SRCS	 		= ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp
+OBJDIR	 		= obj
+OBJ		 		= $(addprefix $(OBJDIR)/, $(SRCS:%.cpp=%.o))
 
-all : $(NAME)
+all				: $(NAME)
 
-$(OBJDIR)/%.o : %.cpp
+$(OBJDIR)/%.o 	: %.cpp
 	@mkdir -p obj
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(NAME) : $(LIBS) $(OBJ)
+$(NAME)			: $(LIBS) $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "--- Compilation in C++ : Done ---\n"
 
-clean :
+clean			:
 	@rm -rf $(OBJ) $(OBJDIR)
 	@echo "--- Clean Done ---\n"
 	
-fclean : clean
+fclean			: clean
 	@rm -rf $(NAME)
 	@echo "--- FClean Done ---\n"
 

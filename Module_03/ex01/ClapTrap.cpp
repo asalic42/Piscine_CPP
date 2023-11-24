@@ -1,8 +1,11 @@
 # include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(100), _energyPoints(10), _attackDamage(20)
+ClapTrap::ClapTrap(std::string name) : _name(name)
 {
-    std::cout << B_BROWN << "ClapTrap constructor called" << NC << std::endl;
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
+	this->_attackDamage = 0;
+    std::cout << B_BROWN << "ClapTrap constructor" << NC << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)

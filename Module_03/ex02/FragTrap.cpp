@@ -2,6 +2,9 @@
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
     std::cout << B_GREEN << "FragTrap constructor called" << NC << std::endl;
 }
 

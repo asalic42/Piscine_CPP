@@ -18,20 +18,17 @@ int	main(void)
 	many.attack("Ross");
 	ross.takeDamage(30);
 	ross.attack("Many");
-	many.takeDamage(70);
-	many.beRepaired(30);
-	many.attack("Ross");
-	ross.takeDamage(80);
 
 	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
 	std::cout << "\t\t\t│\tBattle 2\t│" << std::endl;
 	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
 	ferdinand.attack("Noa");
-	noa.takeDamage(100);
+	noa.takeDamage(30);
 	noa.beRepaired(10);
 	ferdinand.attack("Noa");
 	noa.takeDamage(20);
 	noa.attack("Ferdinand");
+	ferdinand.takeDamage(60);
 
 
 	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
