@@ -63,5 +63,4 @@ int	main(void)
 	hopper.beRepaired(30);
 	bill.beRepaired(30);
 	hopper.highFivesGuys();
-	bill.highFivesGuys();
 }

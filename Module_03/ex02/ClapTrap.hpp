@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <csignal>
 
 # define B_GREEN    "\x1b[32;1m"
 # define B_BROWN    "\x1b[33;1m"

@@ -4,7 +4,6 @@
 int	main(void)
 {
 	ClapTrap	many("Many");
-	// ClapTrap	val("Val");
 	ScavTrap	ferdinand("Ferdinand");
 	ClapTrap	ross("Ross");
 	ScavTrap	noa("Noa");
@@ -25,6 +24,8 @@ int	main(void)
 	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
 	std::cout << "\t\t\t│\tBattle 2\t│" << std::endl;
 	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
+	ferdinand.guardGate();
+	noa.guardGate();
 	ferdinand.attack("Noa");
 	noa.takeDamage(100);
 	noa.beRepaired(10);
@@ -36,6 +37,7 @@ int	main(void)
 	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
 	std::cout << "\t\t\t│\tBattle 3\t│" << std::endl;
 	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
+	ferdinand.guardGate();
 	ferdinand.attack("Many");
 	many.takeDamage(30);
 	many.attack("Ferdinand");
