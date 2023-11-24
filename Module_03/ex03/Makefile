@@ -6,11 +6,11 @@
 #    By: asalic <asalic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 12:13:09 by asalic            #+#    #+#              #
-#    Updated: 2023/11/24 12:27:38 by asalic           ###   ########.fr        #
+#    Updated: 2023/11/24 12:27:31 by asalic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FragTrap
+NAME = DiamondTrap
 CXX	 = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 LIBS	 = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
