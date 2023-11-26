@@ -1,9 +1,9 @@
 NAME = Animals
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-LIBS = Animals.hpp
+LIBS = Animals.hpp Dog.hpp Cat.hpp
 
-SRCS = main.cpp
+SRCS = main.cpp Animals.cpp Dog.cpp Cat.cpp
 OBJS_DIR = obj
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:%.cpp=%.o))
 
