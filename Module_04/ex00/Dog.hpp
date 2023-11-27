@@ -3,9 +3,9 @@
 
 # include <iostream>
 # include <string>
-# include "Animals.hpp"
+# include "Animal.hpp"
 
-class Dog : virtual public Animals
+class Dog : virtual public Animal
 {
 	public :
 		Dog(void);
@@ -13,7 +13,8 @@ class Dog : virtual public Animals
     	Dog& operator=(const Dog &bis);
     	~Dog(void);
 
-		virtual void	makeSound(void);
+		virtual void	makeSound(void) const;
+		virtual std::string getType(void) const;
 };
 
 #endif
