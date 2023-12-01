@@ -5,17 +5,17 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
-    std::cout << B_GREEN << "ScavTrap constructor called" << NC << std::endl;  
+    std::cout << B_BROWN "ScavTrap constructor called" NC << std::endl;  
 }
 
 ScavTrap::ScavTrap(const ScavTrap &bis) : ClapTrap(bis)
 {
-    std::cout << B_GREEN << " Copy ScavTrap constructor called" << NC << std::endl; 
+    std::cout << B_BROWN " Copy ScavTrap constructor called" NC << std::endl; 
 }
 
 ScavTrap::~ScavTrap(void)
 {
-    std::cout << B_BROWN << "ScavTrap destructor called" << NC << std::endl;
+    std::cout << B_GREEN "ScavTrap destructor called" NC << std::endl;
 }
 
 void    ScavTrap::guardGate(void)

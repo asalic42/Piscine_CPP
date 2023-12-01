@@ -5,18 +5,18 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
-    std::cout << B_BROWN << "ClapTrap constructor called" << NC << std::endl;
+    std::cout << B_BROWN "ClapTrap constructor called" NC << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
 	*this = copy;
-	std::cout << B_BROWN << "Copy ClapTrap constructor called" << NC << std::endl;
+	std::cout << B_BROWN "Copy ClapTrap constructor called" NC << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-    std::cout << B_GREEN << "ClapTrap destructor called" << NC << std::endl;
+    std::cout << B_GREEN "ClapTrap destructor called" NC << std::endl;
 }
 
 void    ClapTrap::attack(const std::string& target)

@@ -6,7 +6,7 @@
 #    By: asalic <asalic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 12:13:09 by asalic            #+#    #+#              #
-#    Updated: 2023/11/24 16:32:26 by asalic           ###   ########.fr        #
+#    Updated: 2023/12/01 11:13:36 by asalic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ all				: $(NAME)
 $(OBJDIR)/%.o 	: %.cpp
 	@mkdir -p obj
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "...wait\n"
 
 $(NAME)			: $(LIBS) $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)

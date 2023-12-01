@@ -5,12 +5,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
     this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
-    std::cout << B_GREEN << "FragTrap constructor called" << NC << std::endl;
+    std::cout << B_BROWN << "FragTrap constructor called" NC << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
-    std::cout << "Copy FragTrap constructor called" << std::endl;
+    std::cout << B_BROWN "Copy FragTrap constructor called" NC << std::endl;
 }
 
 FragTrap&   FragTrap::operator=(const FragTrap &bis)
@@ -38,6 +38,6 @@ void    FragTrap::highFivesGuys(void)
 
 FragTrap::~FragTrap(void)
 {
-    std::cout << B_BROWN << "FragTrap destructor called" << NC << std::endl;
+    std::cout << B_GREEN "FragTrap destructor called" NC << std::endl;
 }
 

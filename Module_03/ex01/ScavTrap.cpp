@@ -33,7 +33,7 @@ void    ScavTrap::attack(const std::string &target)
 		std::cout << "\t\tScavTrap says: Doesn't have enough energy points to attack." << std::endl;
 	else
 	{
-		std::cout << "\t\tScavTrap says: Attacks" << target << std::endl;
+		std::cout << "\t\tScavTrap says: Attacks " << target << std::endl;
 		this->_energyPoints--;
         std::cout << B_COLOR << "* Energy points : " << this->_energyPoints << " *" << NC << std::endl;
 	}

@@ -14,12 +14,12 @@ int	main(void)
 	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
 	std::cout << std::endl;
 	many.attack("Ross");
-	ross.takeDamage(30);
+	ross.takeDamage(5);
 	ross.attack("Many");
-	many.takeDamage(70);
-	many.beRepaired(30);
+	many.takeDamage(2);
+	many.beRepaired(10);
 	many.attack("Ross");
-	ross.takeDamage(80);
+	ross.takeDamage(10);
 
 	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
 	std::cout << "\t\t\t│\tBattle 2\t│" << std::endl;
@@ -27,10 +27,10 @@ int	main(void)
 	ferdinand.guardGate();
 	noa.guardGate();
 	ferdinand.attack("Noa");
-	noa.takeDamage(100);
+	noa.takeDamage(50);
 	noa.beRepaired(10);
 	ferdinand.attack("Noa");
-	noa.takeDamage(20);
+	noa.takeDamage(70);
 	noa.attack("Ferdinand");
 
 
@@ -39,17 +39,17 @@ int	main(void)
 	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
 	ferdinand.guardGate();
 	ferdinand.attack("Many");
-	many.takeDamage(30);
+	many.takeDamage(9);
 	many.attack("Ferdinand");
 	ferdinand.takeDamage(50);
-	ferdinand.beRepaired(30);
+	ferdinand.beRepaired(3);
 	many.attack("Ferdinand");
-	ferdinand.takeDamage(70);
+	ferdinand.takeDamage(30);
+	many.beRepaired(20);
 	ferdinand.attack("Many");
-	many.takeDamage(20);
-	many.beRepaired(10);
+	many.takeDamage(10);
 	many.attack("Ferdinand");
-	ferdinand.takeDamage(20);
+	ferdinand.takeDamage(25);
 
 	std::cout << std::endl;
 	std::cout << "└─────── Winner is :" << std::endl;

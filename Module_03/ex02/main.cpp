@@ -7,45 +7,22 @@ int	main(void)
 	ClapTrap	many("Many");
 	ScavTrap	ferdinand("Ferdinand");
 	FragTrap	bill("Bill");
-	ClapTrap	ross("Ross");
-	ScavTrap	noa("Noa");
 	FragTrap	hopper("Hopper");
 
 	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
 	std::cout << "\t\t\t│\tBattle 1\t│" << std::endl;
 	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
-	std::cout << std::endl;
-	many.attack("Ross");
-	ross.takeDamage(30);
-	ross.attack("Many");
-
-	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
-	std::cout << "\t\t\t│\tBattle 2\t│" << std::endl;
-	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
-	ferdinand.attack("Noa");
-	noa.takeDamage(30);
-	noa.beRepaired(10);
-	ferdinand.attack("Noa");
-	noa.takeDamage(20);
-	noa.attack("Ferdinand");
-	ferdinand.takeDamage(60);
-	ferdinand.attack("Noa");
-	noa.takeDamage(70);
-
-
-	std::cout << "\t\t\t┌───────────────────────┐" << std::endl;
-	std::cout << "\t\t\t│\tBattle 3\t│" << std::endl;
-	std::cout << "\t\t\t└───────────────────────┘" << std::endl;
 	ferdinand.attack("Many");
 	many.takeDamage(5);
 	many.attack("Ferdinand");
 	ferdinand.takeDamage(30);
-	ferdinand.beRepaired(30);
 	many.attack("Ferdinand");
-	ferdinand.takeDamage(70);
-	// many.beRepaired(10);
-	// many.attack("Ferdinand");
-	// ferdinand.takeDamage(20);
+	ferdinand.takeDamage(50);
+	many.beRepaired(50);
+	ferdinand.attack("Many");
+	many.takeDamage(20);
+	many.attack("Ferdinand");
+	ferdinand.takeDamage(35);
 
 	std::cout << std::endl;
 	std::cout << "└─────── Winner is :" << std::endl;
@@ -59,5 +36,7 @@ int	main(void)
 	hopper.takeDamage(30);
 	hopper.beRepaired(30);
 	bill.beRepaired(30);
+
+	std::cout << "Match Nul !" << std::endl;
 	hopper.highFivesGuys();
 }
