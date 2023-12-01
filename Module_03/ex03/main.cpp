@@ -8,6 +8,7 @@ int	main(void)
 	DiamondTrap	diana("Diana");
 	ClapTrap	cole("Cole");
 
+	diana.print();
 	diana.whoAmI();
 	cole.attack("Diana");
 	diana.takeDamage(8);

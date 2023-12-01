@@ -1,5 +1,10 @@
 # include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap(void) : ClapTrap()
+{
+	std::cout << B_BROWN << "ScavTrap default constructor" << NC << std::endl;	
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
     this->_hitPoints = 100;

@@ -1,5 +1,10 @@
 # include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap(void) : ClapTrap()
+{
+	std::cout << B_BROWN << "ScavTrap default constructor" << NC << std::endl;	
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {   
     this->_hitPoints = 100;
@@ -43,4 +48,9 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &bis)
     if (this != &bis)
         ClapTrap::operator=(bis);
     return (*this);
+}
+
+int		ScavTrap::getEnergy(void)
+{
+	return _energyPoints;
 }

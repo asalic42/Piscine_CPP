@@ -1,5 +1,10 @@
 # include "FragTrap.hpp"
 
+FragTrap::FragTrap(void) : ClapTrap()
+{
+	std::cout << B_BROWN << "FragTrap default constructor" << NC << std::endl;	
+}
+
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
     this->_hitPoints = 100;
