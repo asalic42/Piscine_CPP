@@ -3,8 +3,8 @@
 
 # include <iostream>
 # include <string>
-# include "Animal.hpp"
 # include "Brain.hpp"
+# include "Animal.hpp"
 
 class Dog : virtual public Animal
 {
@@ -14,10 +14,10 @@ class Dog : virtual public Animal
     	Dog& operator=(const Dog &bis);
     	~Dog(void);
 
-		virtual void		makeSound(void) const;
-		virtual std::string getType(void) const;
-		Brain				*getBrain(void);
-	
+		virtual void			makeSound(void) const;
+		virtual std::string 	getType(void) const;
+		virtual const Brain*	getBrain(void) const;
+
 	private :
 		Brain	*brainD;
 };

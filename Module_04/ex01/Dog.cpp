@@ -24,11 +24,10 @@ std::string Dog::getType(void) const
     return (this->_type);
 }
 
-Brain*  Dog::getBrain(void)
+const Brain*    Dog::getBrain(void) const
 {
-    return(brainD);
+    return this->brainD;
 }
-
 void    Dog::makeSound(void) const 
 {
     std::cout << "Wouf" << std::endl;

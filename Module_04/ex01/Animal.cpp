@@ -29,6 +29,11 @@ Animal&    Animal::operator=(const Animal &bis)
     return (*this);
 }
 
+const Brain*    Animal::getBrain(void) const
+{
+    return (0);
+}
+
 Animal::~Animal(void)
 {
     std::cout << B_CYAN "Animal destructor called" NC << std::endl;

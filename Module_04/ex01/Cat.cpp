@@ -25,14 +25,14 @@ std::string Cat::getType(void) const
     return (this->_type);
 }
 
+const Brain*  Cat::getBrain(void) const
+{
+    return this->brainC;
+} 
+
 void    Cat::makeSound(void) const
 {
     std::cout << "Miaou" << std::endl;
-}
-
-Brain*  Cat::getBrain(void)
-{
-    return(brainC);
 }
 
 Cat&    Cat::operator=(const Cat &bis)
