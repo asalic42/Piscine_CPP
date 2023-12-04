@@ -20,8 +20,11 @@ class Brain
         Brain& operator=(const Brain& bis);
         ~Brain(void);
 
+        void            setIdeas(std::string str) const;
+        std::string    getlastIdea(void) const;
+
     private :
-        std::string ideas[100];
+        std::string* ideas;
 };
 
 #endif

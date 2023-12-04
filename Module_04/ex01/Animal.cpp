@@ -39,7 +39,6 @@ Animal::~Animal(void)
     std::cout << B_CYAN "Animal destructor called" NC << std::endl;
 }
 
-
 /////////////////////////////////////
 //WrongAnimal test class  
 WrongAnimal::WrongAnimal(void)
