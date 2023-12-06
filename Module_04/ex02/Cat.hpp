@@ -17,7 +17,7 @@ class Cat : virtual public Animal
 
 		virtual void			makeSound(void) const;
 		virtual std::string 	getType(void) const;
-		virtual const Brain*	getBrain(void) const;
+		virtual Brain*	getBrain(void) const;
 
 	private :
 		Brain	*brainC;

@@ -23,7 +23,7 @@ class Animal
 
 		virtual void			makeSound(void) const = 0;
 		virtual std::string		getType(void) const;
-		virtual const Brain*	getBrain(void) const;
+		virtual Brain*	getBrain(void) const;
 	
 	protected :
 		std::string		_type;

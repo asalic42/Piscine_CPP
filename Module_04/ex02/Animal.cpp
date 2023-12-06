@@ -29,7 +29,7 @@ Animal&    Animal::operator=(const Animal &bis)
     return (*this);
 }
 
-const Brain*    Animal::getBrain(void) const
+Brain*    Animal::getBrain(void) const
 {
     return (0);
 }

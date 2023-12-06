@@ -7,8 +7,6 @@ int main()
 {
     const Animal* dog = new Dog();
     const Animal* cat = new Cat();
-    // const Animal* abs = new Animal(); -> not allowed because of
-    // the abstract class.
 
     if (cat->getBrain())
     {

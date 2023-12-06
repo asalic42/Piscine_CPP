@@ -16,7 +16,8 @@ Cat::Cat(const Cat &copy)
 
 Cat::~Cat(void)
 {
-    delete this->brainC;
+    if (brainC)
+        delete brainC;
     std::cout << B_GREEN "Cat destructor called" NC << std::endl;
 }
 
@@ -25,7 +26,7 @@ std::string Cat::getType(void) const
     return (this->_type);
 }
 
-const Brain*  Cat::getBrain(void) const
+Brain*  Cat::getBrain(void) const
 {
     return this->brainC;
 } 
@@ -37,9 +38,9 @@ void          Cat::makeSound(void) const
 
 Cat&    Cat::operator=(const Cat &bis)
 {
-    this->brainC = bis.brainC;
-    if (this != &bis)
-        Animal::operator=(bis);
+    Brain* newBrain = new Brain(*bis.brainC);
+    this->brainC = newBrain;
+    _type = bis._type;
     return (*this);
 }
 

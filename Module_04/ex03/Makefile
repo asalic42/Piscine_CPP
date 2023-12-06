@@ -1,9 +1,9 @@
 NAME 		= Materia
 CXX			= c++
-CXXFLAGS 	= -Wall -Wextra -Werror
-LIBS		= Materia.hpp IceCure.hpp Character.hpp
+CXXFLAGS 	= -Wall -Wextra -Werror -g3
+LIBS		= AMateria.cpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp MateriaSource.hpp IMateriaSource.hpp
 
-SRCS 		= main.cpp Materia.cpp IceCure.cpp Character.cpp
+SRCS 		= main.cpp AMateria.cpp Ice.cpp Character.cpp Cure.cpp MateriaSource.cpp
 OBJ_DIR		= obj
 OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
 
