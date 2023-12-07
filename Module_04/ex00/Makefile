@@ -7,23 +7,31 @@ SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
 OBJS_DIR = obj
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:%.cpp=%.o))
 
+RED 	= \033[31;1m
+BLUE 	= \033[34;1m
+YELLOW 	= \033[33;1m
+GREEN 	= \033[32;1m
+PURP 	= \033[35;1m
+CYAN 	= \033[36;1m
+NC 		= \033[0m
+
 all : $(NAME)
 
 $(OBJS_DIR)/%.o : %.cpp $(LIBS)
 	@mkdir -p obj
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
-	@echo "...wait\n"
+	@echo "$(YELLOW)...wait$(NC)\n"
 
 $(NAME) : $(LIBS) $(OBJS)
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@echo "--> Compilation C++ : Done\n"
+	@echo "$(CYAN)--> Compilation C++ : Done$(NC)\n"
 
 clean :
 	@rm -rf $(OBJS) $(OBJS_DIR)
-	@echo "--> Clean : Done\n"
+	@echo "$(RED)--> Clean : Done$(NC)\n"
 
 fclean : clean
 	@rm -rf $(NAME)
-	@echo "--> FClean : Done\n"
+	@echo "$(RED)--> FClean : Done$(NC)\n"
 
 re : fclean all

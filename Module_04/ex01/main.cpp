@@ -11,10 +11,19 @@ int main()
     if (cat->getBrain())
     {
         std::cout << "There is a brain in here" << std::endl;
-        cat->getBrain()->setIdeas("je suis vivante");
+        cat->getBrain()->setIdea("je suis vivante");
         std::cout << cat->getBrain()->getlastIdea() << std::endl;
     }
-    delete cat;//should not create a leak
+    Dog basic;
+    basic.getBrain()->setIdea("helloooo je suis ici");
+    {
+        Dog tmp = basic;
+        std::cout << "tmp idea : " << tmp.getBrain()->getlastIdea() << std::endl;
+        tmp.getBrain()->setIdea("je suis temporaire");
+        std::cout << "tmp idea : " << tmp.getBrain()->getlastIdea() << std::endl;
+        std::cout << "basic idea :" << basic.getBrain()->getlastIdea() << std::endl;
+    }
+    delete cat;
     delete dog;
     return 0;
 }

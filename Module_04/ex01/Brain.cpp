@@ -3,51 +3,36 @@
 Brain::Brain(void)
 {
     std::cout << B_CYAN "Brain constructor called" NC << std::endl;
-    this->ideas = new std::string[100];
+    for (int i=0;i<100;i++)
+        ideas[i] = "Nothing";
 }
 
 Brain::Brain(const Brain &copy)
 {
     std::cout << B_CYAN "Brain copy constructor called" NC << std::endl;
-    *this = copy;
+    for (int i=0;i<100;i++)
+        ideas[i] = copy.ideas[i];
 }
 
 Brain&  Brain::operator=(const Brain& bis)
 {
-    int i=0;
-    while (i < 100)
-    {
+    for (int i=0; i< 100; i++)
         this->ideas[i] = bis.ideas[i];
-    }
     return *this;
 }
 
 std::string    Brain::getlastIdea(void) const
 {
-    int i=0;
-
-    while (!this->ideas[i].empty())
-        i ++;
-    if (i < 100 && i != 0)
-        return (this->ideas[i-1]);
-    return ("Idea box is empty");
+   return ideas[99];
 }
 
-void    Brain::setIdeas(std::string str) const
+void    Brain::setIdea(std::string str)
 {
     for (int i=0; i < 100 ; i++)
-    {
-        if (this->ideas[i].empty())
-        {
-            this->ideas[i] = str;
-            return ;
-        }
-    }
-    std::cout << "Ideas box is full" << std::endl;
+        this->ideas[i] = str;
 }
 
 Brain::~Brain(void)
 {
-    delete [] ideas;
     std::cout << B_CYAN "Brain destructor called" NC << std::endl;
 }

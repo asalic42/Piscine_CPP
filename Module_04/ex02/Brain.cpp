@@ -27,11 +27,10 @@ std::string    Brain::getlastIdea(void) const
     return (this->ideas[99]);
 }
 
-void    Brain::setIdeas(std::string str)
+void    Brain::setIdea(std::string str)
 {
     for (int i=0; i < 100 ; i++)
         this->ideas[i] = str;
-    std::cout << "Ideas box is full" << std::endl;
 }
 
 Brain::~Brain(void)

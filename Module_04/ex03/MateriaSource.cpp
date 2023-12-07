@@ -36,7 +36,7 @@ void MateriaSource::learnMateria(AMateria* m) {
 	else {
         int counter = this->countItems();
 		tab[counter] = m;
-        std::cout << GREEN << m->getType() << " is now equiped in slot " << counter << " of the materia tab" << NC << std::endl;
+        std::cout << GREEN << m->getType() << " is now stored in slot " << counter << " of the materia tab" << NC << std::endl;
     }
 }
 

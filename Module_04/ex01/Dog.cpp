@@ -15,7 +15,8 @@ Dog::Dog(const Dog &copy)
 
 Dog::~Dog(void)
 {
-    delete this->brainD;
+    if (this->brainD)
+        delete this->brainD;
     std::cout << B_PURP "Dog destructor called" NC << std::endl;
 }
 
@@ -24,7 +25,7 @@ std::string Dog::getType(void) const
     return (this->_type);
 }
 
-const Brain*    Dog::getBrain(void) const
+Brain*    Dog::getBrain(void) const
 {
     return this->brainD;
 }
@@ -35,8 +36,8 @@ void    Dog::makeSound(void) const
 
 Dog&    Dog::operator=(const Dog &bis)
 {
-    this->brainD = bis.brainD;
-    if (this != &bis)
-        Animal::operator=(bis);
+    Brain* newBrain = new Brain(*bis.brainD);
+    this->brainD = newBrain;
+    this->_type = bis._type;
     return (*this);
 }

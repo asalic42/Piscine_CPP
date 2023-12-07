@@ -32,6 +32,7 @@ int main()
 
     const WrongAnimal* animal = new WrongAnimal();
     const WrongAnimal* nocat = new WrongCat();
+    const WrongCat*     catcat = new WrongCat();
 
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
@@ -42,7 +43,9 @@ int main()
     std::cout << "\n--> Wrong things now:\n" << std::endl;
     animal->makeSound();
     nocat->makeSound();
+    catcat->makeSound();
 
+    delete catcat;
     delete nocat;
     delete animal;
     delete i;

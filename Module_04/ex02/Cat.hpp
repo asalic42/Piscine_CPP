@@ -6,7 +6,6 @@
 # include "Brain.hpp"
 # include "Animal.hpp"
 
-
 class Cat : virtual public Animal
 {
 	public :
@@ -17,22 +16,10 @@ class Cat : virtual public Animal
 
 		virtual void			makeSound(void) const;
 		virtual std::string 	getType(void) const;
-		virtual Brain*	getBrain(void) const;
+		virtual Brain*			getBrain(void) const;
 
 	private :
 		Brain	*brainC;
-};
-
-class WrongCat : public WrongAnimal
-{
-	public :
-		WrongCat(void);
-    	WrongCat(const WrongCat &copy);
-    	WrongCat& operator=(const WrongCat &bis);
-    	~WrongCat(void);
-
-		void		makeSound(void) const;
-		std::string getType(void) const;
 };
 
 #endif

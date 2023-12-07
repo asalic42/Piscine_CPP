@@ -40,42 +40,6 @@ Cat&    Cat::operator=(const Cat &bis)
 {
     Brain* newBrain = new Brain(*bis.brainC);
     this->brainC = newBrain;
-    _type = bis._type;
-    return (*this);
-}
-
-///////////////////////////////////////////////
-//Wrong Cat inherits from WrongAnimal
-WrongCat::WrongCat(void) : WrongAnimal()
-{
-    this->_type = "WrongCat";
-    std::cout << B_GREEN "WrongCat default constructor called" NC << std::endl;
-}
-
-WrongCat::WrongCat(const WrongCat &copy)
-{
-    *this = copy;
-    std::cout << B_GREEN "WrongCat copy constructor called" NC << std::endl;
-}
-
-WrongCat::~WrongCat(void)
-{
-    std::cout << B_GREEN "WrongCat destructor called" NC << std::endl;
-}
-
-std::string WrongCat::getType(void) const
-{
-    return (this->_type);
-}
-
-void    WrongCat::makeSound(void) const
-{
-    std::cout << "Miaou" << std::endl;
-}
-
-WrongCat&    WrongCat::operator=(const WrongCat &bis)
-{
-    if (this != &bis)
-        WrongAnimal::operator=(bis);
+    this->_type = bis._type;
     return (*this);
 }

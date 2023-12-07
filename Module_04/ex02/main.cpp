@@ -7,11 +7,12 @@ int main()
 {
     const Animal* dog = new Dog();
     const Animal* cat = new Cat();
+    // const Animal* notAnimal = new Animal(); class abstract error
 
     if (cat->getBrain())
     {
         std::cout << "There is a brain in here" << std::endl;
-        cat->getBrain()->setIdeas("je suis vivante");
+        cat->getBrain()->setIdea("je suis vivante");
         std::cout << cat->getBrain()->getlastIdea() << std::endl;
     }
     delete cat;

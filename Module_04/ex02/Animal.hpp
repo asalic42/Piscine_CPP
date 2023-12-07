@@ -23,26 +23,12 @@ class Animal
 
 		virtual void			makeSound(void) const = 0;
 		virtual std::string		getType(void) const;
-		virtual Brain*	getBrain(void) const;
+		virtual Brain*			getBrain(void) const;
 	
 	protected :
 		std::string		_type;
 
 };
 
-class	WrongAnimal
-{
-	public : 
-        WrongAnimal(void);
-    	WrongAnimal(const WrongAnimal &copy);
-    	WrongAnimal& operator=(const WrongAnimal &bis);
-    	~WrongAnimal(void);
-
-		void			makeSound(void) const;
-		std::string		getType(void) const;
-	
-	protected :
-		std::string		_type;
-};
 
 #endif
