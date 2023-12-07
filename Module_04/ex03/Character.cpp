@@ -1,44 +1,58 @@
 # include "Character.hpp"
 
-Character::Character(void) : _name("no_name") { 
+//Canonical Form
+Character::Character(void) : _name("no_name")
+{ 
     for (int i = 0; i < 4; i++)
         tab[i] = NULL;
 }
 
-Character::Character(std::string const& name) : _name(name) { 
+Character::Character(std::string const& name) : _name(name)
+{ 
     for (int i = 0; i < 4; i++)
         tab[i] = NULL;
 }
 
-Character::Character(const Character &cpy) {
+Character::Character(const Character &cpy)
+{
     Character::operator=(cpy);
-}
-
-Character::~Character() {}
-
-std::string const&  Character::getName(void) const {
-    return (_name);
 }
 
 Character&   Character::operator=(const Character& bis)
 {
-    for (int i = 0; i < 4; i++) {
-        if (tab[i])
-            delete tab[i];
-        tab[i] = bis.tab[i];
+    if (this != &bis)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (tab[i])
+                delete tab[i];
+            tab[i] = bis.tab[i];
+        }
+        _name = bis._name;
     }
-    _name = bis._name;
     return (*this);
 }
 
-int Character::countItems() {
+Character::~Character() {}
+
+////////////////////////////////////////
+//Methods
+
+std::string const&  Character::getName(void) const
+{
+    return (_name);
+}
+
+int Character::countItems(void)
+{
     int i = 0;
     while (i < 4 && tab[i] != NULL)
         i++;
     return i;
 }
 
-void Character::equip(AMateria* m) {
+void Character::equip(AMateria* m)
+{
 	if (this->countItems() == 4)
 		std::cout << RED << "Inventory is full." NC << std::endl;
 	else {
@@ -48,14 +62,16 @@ void Character::equip(AMateria* m) {
     }
 }
 
-void Character::unequip(int idx) {
+void Character::unequip(int idx)
+{
     if (this->countItems() == 0)
         std::cout << RED "Nothing in inventory." NC << std::endl;
     else
         tab[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target) {
+void Character::use(int idx, ICharacter& target)
+{
     if (idx >= 4 || idx < 0) {std::cout << RED << idx << " Isn't a valid index." << NC << std::endl; return;}
     if (tab[idx] == NULL) {
         std::cout << RED "No items there !" NC << std::endl;

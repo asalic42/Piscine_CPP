@@ -8,17 +8,24 @@ Cat::Cat(void) : Animal()
     std::cout << B_GREEN "Cat default constructor called" NC << std::endl;
 }
 
-Cat::Cat(const Cat &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
+    this->_type = copy._type;
+    this->brainC = new Brain(*copy.brainC);
+    if (!this->brainC)
+    {
+        std::cout << "Error : Malloc failed" << std::endl;
+        return ;
+    }
     *this = copy;
     std::cout << B_GREEN "Cat copy constructor called" NC << std::endl;
 }
 
 Cat::~Cat(void)
 {
+    std::cout << B_GREEN "Cat destructor called" NC << std::endl;
     if (brainC)
         delete brainC;
-    std::cout << B_GREEN "Cat destructor called" NC << std::endl;
 }
 
 std::string Cat::getType(void) const
@@ -38,8 +45,12 @@ void          Cat::makeSound(void) const
 
 Cat&    Cat::operator=(const Cat &bis)
 {
-    Brain* newBrain = new Brain(*bis.brainC);
-    this->brainC = newBrain;
-    this->_type = bis._type;
+    if (this->brainC)
+        delete this->brainC;
+    if (this != &bis)
+    {
+        this->_type = bis._type;
+        this->brainC = new Brain(*bis.brainC);
+    }
     return (*this);
 }

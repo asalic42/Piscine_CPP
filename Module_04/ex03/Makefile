@@ -1,6 +1,6 @@
 NAME 		= Materia
 CXX			= c++
-CXXFLAGS 	= -Wall -Wextra -Werror -g3
+CXXFLAGS 	= -Wall -Wextra -Werror -g3 -std=c++98
 LIBS		= AMateria.cpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp MateriaSource.hpp IMateriaSource.hpp
 
 SRCS 		= main.cpp AMateria.cpp Ice.cpp Character.cpp Cure.cpp MateriaSource.cpp

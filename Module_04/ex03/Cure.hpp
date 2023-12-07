@@ -6,10 +6,10 @@
 class Cure : public AMateria
 {
     public :
-        Cure();
+        Cure(void);
         Cure(const Cure &cpy);
-        ~Cure(void);
         Cure&   operator=(const Cure& bis);
+        ~Cure(void);
         virtual AMateria*    clone(void) const;
 };
 

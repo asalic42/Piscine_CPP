@@ -19,7 +19,7 @@ class Animal
         Animal(void);
     	Animal(const Animal &copy);
     	Animal& operator=(const Animal &bis);
-    	~Animal(void);
+    	virtual ~Animal(void);
 
 		virtual void			makeSound(void) const;
 		virtual std::string		getType(void) const;

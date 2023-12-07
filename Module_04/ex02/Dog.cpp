@@ -1,5 +1,5 @@
 # include "Dog.hpp"
-# include "cstring"
+# include <cstring>
 
 Dog::Dog(void) : Animal()
 {
@@ -8,17 +8,24 @@ Dog::Dog(void) : Animal()
     std::cout << B_PURP "Dog default constructor called" NC << std::endl;
 }
 
-Dog::Dog(const Dog &copy)
+Dog::Dog(const Dog &copy) : Animal(copy)
 {
+    this->_type = copy._type;
+    this->brainD = new Brain(*copy.brainD);
+    if (!this->brainD)
+    {
+        std::cout << "Error : Malloc failed" << std::endl;
+        return ;
+    }
     *this = copy;
     std::cout << B_PURP "Dog copy constructor called" NC << std::endl;
 }
 
 Dog::~Dog(void)
 {
+    std::cout << B_PURP "Dog destructor called" NC << std::endl;
     if (this->brainD)
         delete this->brainD;
-    std::cout << B_PURP "Dog destructor called" NC << std::endl;
 }
 
 std::string Dog::getType(void) const
@@ -37,8 +44,12 @@ void            Dog::makeSound(void) const
 
 Dog&    Dog::operator=(const Dog &bis)
 {
-    Brain* newBrain = new Brain(*bis.brainD);
-    this->brainD = newBrain;
-    this->_type = bis._type;
+    if (this->brainD)
+        delete this->brainD;
+    if (this != &bis)
+    {
+        this->_type = bis._type;
+        this->brainD = new Brain(*bis.brainD);
+    }
     return (*this);
 }

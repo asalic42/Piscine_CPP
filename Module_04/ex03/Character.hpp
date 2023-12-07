@@ -19,10 +19,10 @@ class Character : public ICharacter
         AMateria*    tab[4];
     public :
         Character(void);
-        Character(const Character &cpy);
         Character(std::string const& name);
-        ~Character(void);
+        Character(const Character &cpy);
         Character&   operator=(const Character& bis);
+        ~Character(void);
 
         virtual 	std::string const& getName(void) const;
 		virtual     void equip(AMateria* m);

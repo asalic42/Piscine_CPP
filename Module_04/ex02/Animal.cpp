@@ -24,7 +24,8 @@ void    Animal::makeSound(void) const
 
 Animal&    Animal::operator=(const Animal &bis)
 {
-    this->_type = bis._type;
+    if (this != &bis)
+        this->_type = bis._type;
     return (*this);
 }
 

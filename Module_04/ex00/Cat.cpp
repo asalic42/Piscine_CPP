@@ -7,7 +7,7 @@ Cat::Cat(void) : Animal()
     std::cout << B_GREEN "Cat default constructor called" NC << std::endl;
 }
 
-Cat::Cat(const Cat &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
     *this = copy;
     std::cout << B_GREEN "Cat copy constructor called" NC << std::endl;

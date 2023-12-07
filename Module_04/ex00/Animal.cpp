@@ -25,7 +25,7 @@ void    Animal::makeSound(void) const
 Animal&    Animal::operator=(const Animal &bis)
 {
     if (this != &bis)
-        Animal::operator=(bis);
+        this->_type = bis._type;
     return (*this);
 }
 
@@ -33,7 +33,6 @@ Animal::~Animal(void)
 {
     std::cout << B_CYAN "Animal destructor called" NC << std::endl;
 }
-
 
 /////////////////////////////////////
 //WrongAnimal test class  
@@ -62,7 +61,7 @@ void    WrongAnimal::makeSound(void) const
 WrongAnimal&    WrongAnimal::operator=(const WrongAnimal &bis)
 {
     if (this != &bis)
-        WrongAnimal::operator=(bis);
+        this->_type = bis._type;
     return (*this);
 }
 
