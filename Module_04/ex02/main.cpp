@@ -7,7 +7,7 @@ int main()
 {
     const Animal* dog = new Dog();
     const Animal* cat = new Cat();
-    // const Animal* notAnimal = new Animal(); //class abstract error
+    // const Animal* notAnimal = new Animal (); //class abstract error
 
     if (cat->getBrain())
     {

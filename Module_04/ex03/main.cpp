@@ -17,7 +17,6 @@ int main()
     AMateria* tmp;
     AMateria* ice2 = ice->clone();
 
-
     src->learnMateria(ice);
     src->learnMateria(cure);
 

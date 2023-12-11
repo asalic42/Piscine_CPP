@@ -42,10 +42,10 @@ void    Dog::makeSound(void) const
 
 Dog&    Dog::operator=(const Dog &bis)
 {
-    if (this->brainD)
-        delete this->brainD;
     if (this != &bis)
     {
+        if (this->brainD)
+            delete this->brainD;
         this->brainD = new Brain(*bis.brainD);
         this->_type = bis._type;
     }

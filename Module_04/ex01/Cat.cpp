@@ -44,10 +44,10 @@ void    Cat::makeSound(void) const
 
 Cat&    Cat::operator=(const Cat &bis)
 {
-    if (this->brainC)
-        delete this->brainC;
     if (this != &bis)
     {
+        if (this->brainC)
+            delete this->brainC;
         this->brainC = new Brain(*bis.brainC);
         this->_type = bis._type;
     }
