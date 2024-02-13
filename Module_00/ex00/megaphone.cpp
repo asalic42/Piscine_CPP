@@ -21,6 +21,8 @@ int main(int argc, char **argv)
         while (i < argc)
         {
             alpha_up(argv[i]);
+            if (i != argc -1)
+                std::cout << " ";
             i ++;
         }
         std::cout << std::endl;
