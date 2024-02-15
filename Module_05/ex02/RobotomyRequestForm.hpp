@@ -2,6 +2,8 @@
 # define ROBOTOMY_REQUEST_FORM
 
 # include <iostream>
+# include <cstdlib>
+# include <ctime>
 # include "AForm.hpp"
 
 class   RobotomyRequestForm : public AForm
@@ -15,6 +17,8 @@ class   RobotomyRequestForm : public AForm
         RobotomyRequestForm(const RobotomyRequestForm& copy);
         RobotomyRequestForm&    operator=(const RobotomyRequestForm& bis);
         virtual ~RobotomyRequestForm(void);
+
+        virtual void    execute(Bureaucrat const & executor) const;
 };
 
-#endif
+#endif  

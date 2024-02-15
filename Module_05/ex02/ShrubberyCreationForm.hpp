@@ -18,7 +18,7 @@ class   ShrubberyCreationForm : public AForm
         ShrubberyCreationForm& operator=(const ShrubberyCreationForm& bis);
         virtual ~ShrubberyCreationForm(void);
 
-        virtual void    execute(void) const;
+        virtual void    execute(Bureaucrat const & executor) const;
 };
 
 #define  TREES  \

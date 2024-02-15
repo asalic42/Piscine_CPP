@@ -28,8 +28,10 @@ int         AForm::getExecGrade() const { return (this->_execGrade); }
 
 void    AForm::beSigned(Bureaucrat& inst)
 {
-    if (inst.getGrade() > this->_minGrade)
+    if (inst.getGrade() > this->getMinGrade())
         throw GradeTooLowException();
+    else if (this->_signed == true)
+        std::cout << "Form is already signed" << std::endl;
     else
         this->_signed = true;
 }

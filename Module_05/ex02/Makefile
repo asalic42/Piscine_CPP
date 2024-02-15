@@ -7,7 +7,7 @@ LIBS = Bureaucrat.hpp AForm.hpp \
 		ShrubberyCreationForm.hpp
 
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp \
-		PresidentialPardonForm.cpp \ 
+		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp
 OBJS_DIR = obj

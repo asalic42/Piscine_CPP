@@ -14,19 +14,26 @@ ShrubberyCreationForm&   ShrubberyCreationForm::operator=(const ShrubberyCreatio
     return (*this);
 }
 
-void    ShrubberyCreationForm::execute(void) const
+void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    std::string filename = this->_target;
-    filename.append("_shrubbery");
-    std::ofstream shrubfile(filename.c_str());
-    if (!shrubfile.is_open())
+    if (this->getSigned() && executor.getGrade() <= this->getExecGrade())
     {
-        std::cerr << RED "Error while opening the ofstream" NC << std::endl;
-        return ;
+        std::string filename = this->_target;
+        filename.append("_shrubbery");
+        std::ofstream shrubfile(filename.c_str());
+        if (!shrubfile.is_open())
+        {
+            std::cerr << RED "Error while opening the ofstream" NC << std::endl;
+            return ;
+        }
+        shrubfile << TREES;
+        shrubfile.close();
+        std::cout << B_CYAN "file successfully created" NC << std::endl;
     }
-    shrubfile << TREES;
-    shrubfile.close();
-    std::cout << B_CYAN "file successfully created" NC << std::endl;
+    else if (this->getSigned() == false)
+		throw FormNotSigned();
+	else if (executor.getGrade() > this->getExecGrade())
+		throw GradeTooLowException();
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}

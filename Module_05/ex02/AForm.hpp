@@ -1,17 +1,16 @@
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
-#include <iostream>
-
-class Bureaucrat;
+# include <iostream>
+# include "Bureaucrat.hpp"
 
 class   AForm
 {
     private :
         std::string	_name;
         bool		_signed;
-        const int	_minGrade;
-        const int	_execGrade;
+        int	        _minGrade;
+        int	        _execGrade;
     
     public :
         AForm(void);
@@ -27,6 +26,7 @@ class   AForm
 
 		void	        beSigned(Bureaucrat& inst);
         virtual void    execute(Bureaucrat const & executor) const = 0;
+        // virtual void    execution(Bureaucrat const & executor) const = 0;
 
         class   GradeTooHighException : public std::exception
         {
@@ -39,6 +39,12 @@ class   AForm
             public :
                 virtual const char *what() const throw(){
                     return ("Grade too low"); }
+        };
+        class   FormNotSigned : public std::exception
+        {
+            public :
+                virtual const char *what() const throw(){
+                    return ("Form not signed"); }
         };
 };
 

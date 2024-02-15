@@ -33,10 +33,15 @@ void    Bureaucrat::lowerGrade(void)
 
 void    Bureaucrat::signForm(Form& inst)
 {
-    if (inst.getSigned() == true)
+    try {
+        form.beSigned(*this);
         std::cout << BLUE "Bureaucrat " << this->_name << " signed " << inst.getName() << NC << std::endl;
-    else
-        std::cout << RED "Bureaucrat " << this->_name << " couldn't sign " << inst.getName() << " because his grade's too low" << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cout << RED "Bureaucrat " << this->_name << " couldn't sign " << inst.getName() \
+        << " because his grade (" << inst.getGrade() << ") is too low (required : " << form.getMinGrade() \
+        << ")" NC << std::endl;
+    }
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bis)
