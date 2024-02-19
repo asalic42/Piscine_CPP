@@ -38,7 +38,6 @@ int	main(void) {
 		Form form("enquete", 50, 50);
 
 		std::cout << crat << std::endl;
-		form.beSigned(crat);
 		crat.signForm(form);
 		std::cout << form << std::endl;
 	}
@@ -51,22 +50,20 @@ int	main(void) {
 	try{
 		Form form("enquete", 50, 50);
 
-		Bureaucrat guy("guy", 1);
+		Bureaucrat guy("guy", 85);
 		std::cout << guy << std::endl;
-		form.beSigned(guy);
+		guy.signForm(form);
 		std::cout << form << std::endl;
 
 		Bureaucrat man("man", 90);
 		std::cout << man << std::endl;
-		form.beSigned(man);
+		man.signForm(form);
 		std::cout << form << std::endl;
 
 		Bureaucrat woman("woman", 2);
 		std::cout << woman << std::endl;
-		form.beSigned(woman);
 		woman.signForm(form);
 		std::cout << form << std::endl;
-
 	}
 	catch (std::exception& e) {
 		std::cout << RED << e.what() << NC << std::endl;
