@@ -34,12 +34,17 @@ void    Bureaucrat::lowerGrade(void)
 void    Bureaucrat::signForm(Form& inst)
 {
     try {
-        form.beSigned(*this);
-        std::cout << BLUE "Bureaucrat " << this->_name << " signed " << inst.getName() << NC << std::endl;
+        if (inst.getSigned() == true)
+            std::cout << BLUE "Form is already sign" NC << std::endl;
+        else
+        {
+            inst.beSigned(*this);
+            std::cout << BLUE "Bureaucrat " << this->_name << " signed " << inst.getName() << NC << std::endl;
+        }
     }
     catch (std::exception& e) {
-        std::cout << RED "Bureaucrat " << this->_name << " couldn't sign " << inst.getName() \
-        << " because his grade (" << inst.getGrade() << ") is too low (required : " << form.getMinGrade() \
+        std::cerr << RED "Bureaucrat " << this->_name << " couldn't sign " << inst.getName() \
+        << " because his grade (" << this->getGrade() << ") is too low (required : " << inst.getMinGrade() \
         << ")" NC << std::endl;
     }
 }

@@ -28,9 +28,9 @@ int         Form::getExecGrade() const { return (this->_execGrade); }
 
 void    Form::beSigned(Bureaucrat& inst)
 {
-    if (inst.getGrade() > this->_minGrade)
+    if (inst.getGrade() > this->getMinGrade())
         throw GradeTooLowException();
-    else
+    else if (getSigned() != true)
         this->_signed = true;
 }
 

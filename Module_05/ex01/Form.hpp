@@ -10,8 +10,8 @@ class   Form
     private :
         std::string		_name;
         bool			_signed;
-        const int		_minGrade;
-        const int		_execGrade;
+        int		        _minGrade;
+        int		        _execGrade;
     
     public :
         Form(void);

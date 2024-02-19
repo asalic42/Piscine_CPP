@@ -13,6 +13,10 @@ class   Intern
         virtual ~Intern(void);
     
         AForm*  makeForm(std::string name, std::string target);
+
+        AForm*  makeShrubbery(std::string target);
+        AForm*  makeRobotomy(std::string target);
+        AForm*  makePresidential(std::string target);
 };
 
 #endif

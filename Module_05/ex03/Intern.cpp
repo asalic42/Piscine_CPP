@@ -14,29 +14,34 @@ Intern&     Intern::operator=(const Intern& bis)
     return (*this);
 }
 
-// AForm*  Intern::makeForm(std::string name, std::string target)
-// {
-//     std::string tab[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-//     int i=0;
-//     while (!tab[i].empty() && name != tab[i]) {i++;}
-//     switch (i+1)
-//     {
-//         case 1:
-//             ShrubberyCreationForm *shrub = new ShrubberyCreationForm(target);
-//             std::cout << "\t===[Intern creates a Shrubbery Creation Form]===" << std::endl;
-//             return (shrub);
-//         case 2:
-//             RobotomyRequestForm *robot = new RobotomyRequestForm(target);
-//             std::cout << "\t===[Intern creates a Robotomy Request Form]===" << std::endl;
-//             return (robot);
-//         case 3:
-//             PresidentialPardonForm *president = new PresidentialPardonForm(target);
-//             std::cout << "\t===[Intern creates a Presidential Pardon Form]===" << std::endl;
-//             return (president);
-//         default:
-//             std::cout << "\t===[Form name unknown]===" << std::endl;
-//     }
-//     return (NULL);
-// } //pas bon
+AForm*  Intern::makeShrubbery(std::string target) {
+    std::cout << "\t===[Intern creates a Shrubbery Creation Form]===" << std::endl;
+    return (new ShrubberyCreationForm(target));
+}
+
+AForm*  Intern::makeRobotomy(std::string target) {
+    std::cout << "\t===[Intern creates a Robotomy Request Form]===" << std::endl;
+    return (new RobotomyRequestForm(target));
+}
+
+AForm*  Intern::makePresidential(std::string target) {
+    std::cout << "\t===[Intern creates a Presidential Pardon Form]===" << std::endl;
+    return (new PresidentialPardonForm(target));
+}
+
+AForm*  Intern::makeForm(std::string name, std::string target)
+{
+    std::string tab[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+    AForm*(Intern::*forms[3])(std::string) = {
+        &Intern::makeShrubbery,
+        &Intern::makeRobotomy,
+        &Intern::makePresidential};
+    for (int i=0;i < 4;i ++) {
+        if (name == tab[i])
+            return ((this->*forms[i])(target));
+    }
+    std::cout << "Form doesn't exist" << std::endl;
+    return (NULL);
+}
 
 Intern::~Intern(void) {}
