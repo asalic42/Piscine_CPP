@@ -14,7 +14,7 @@ $(OBJS_DIR)/%.o : %.cpp $(LIBS)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 	@echo "...wait\n"
 
-$(NAME) : $(LIBS) $(OBJS)
+$(NAME) : $(LIBS) $(OBJS) Makefile
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo "--> Compilation C++ : Done\n"
 
