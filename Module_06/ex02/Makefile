@@ -1,9 +1,9 @@
-NAME = static
+NAME = serialize
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
-LIBS = ScalarConverter.hpp
+LIBS = Base.hpp A.hpp B.hpp C.hpp
 
-SRCS = main.cpp ScalarConverter.cpp print_messages.cpp convert_types.cpp
+SRCS = main.cpp generator.cpp
 OBJS_DIR = obj
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:%.cpp=%.o))
 
