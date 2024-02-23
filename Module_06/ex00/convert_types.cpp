@@ -73,7 +73,7 @@ int is_nan(std::string str)
         return (1);
     else {
         for (int i=0; str[i]; i++) {
-            if (i != 0 && (str[i] < '0' || str[i] > '9') && str[i] != '-' && str[i] != 'f' && str[i] != '.')
+            if (i != 0 && (str[i] < '0' || str[i] > '9') && str[i] != '-' && str[i] != 'f' && str[i] != '.' && str[i] != 'e' && str[i] != '+')
                 return (1);
         }
     }

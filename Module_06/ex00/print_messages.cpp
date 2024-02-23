@@ -71,16 +71,23 @@ void    print_float_zero(float f)
 
 void    print_int_float_double(int i, float f, double d, int cod)
 {
-    if (d < -2147483648.9)
+    int max=0;
+    if ((i == 0 && i != f && f < -2147483648.9f) || (f != 0 && f < -2147483648.9f) || (i == 0 && i == f && i != d) || (i == 0 && i != d && d < DOUBLE_MIN))
         std::cout << "int: -inf" << std::endl;
-    else if (d > 2147483647.9)
+    else if ((i == 0 && i != f && f > 2147483647.9f) || (f != 0 && f > 2147483647.9f) || (i == 0 && i == f && i != d) || (i == 0 && i != d && d > DOUBLE_MAX))
         std::cout << "int: +inf" << std::endl;
     else
         std::cout << "int: " << i << std::endl;
-    if (f < -2147483648.9 && f < FLOAT_MIN)
+    if ((f != d && d != 0 && d < FLOAT_MIN && d < -2147483648.9) || (f == 0 && f != d) || (f == 0 && f != d && d < DOUBLE_MIN))
+    {
         std::cout << "float: -inff" << std::endl;
-    else if (f > 2147483647.9 && f > FLOAT_MAX)
+        max = 1;
+    }
+    else if ((f != d && d != 0 && d > FLOAT_MAX && d > 2147483647.9) || (f == 0 && f != d) || (f == 0 && f != d && d > DOUBLE_MAX))
+    {
         std::cout << "float: +inff" << std::endl;
+        max = 2;
+    }
     else
     {
         if (cod == 1)
@@ -88,9 +95,9 @@ void    print_int_float_double(int i, float f, double d, int cod)
         if (cod == 2)
             std::cout << "float: " << f << "f" << std::endl;
     }
-    if (f < -2147483648.9 && d < DOUBLE_MIN)
+    if (d < DOUBLE_MIN && max == 1)
         std::cout << "double: -inf" << std::endl;
-    else if (f > 2147483647.9 && d > DOUBLE_MAX)
+    else if (d > DOUBLE_MAX && max == 2)
         std::cout << "double: +inf" << std::endl;
     else
     {

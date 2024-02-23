@@ -6,11 +6,9 @@
 # include <cctype>
 # include <stdlib.h>
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
-# define FLOAT_MIN 1.175494351e-38
+# define FLOAT_MIN 1.175494351e-45
 # define FLOAT_MAX 3.402823466e+38
-# define DOUBLE_MIN 2.2250738585072014e-308
+# define DOUBLE_MIN 2.2250738585072014e-323
 # define DOUBLE_MAX 1.7976931348623158e+308
 
 class ScalarConverter
