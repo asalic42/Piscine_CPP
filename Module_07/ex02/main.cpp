@@ -1,14 +1,5 @@
 #include "Array.hpp"
 
-// int main(void)
-// {
-//     // int *a = new int();
-//     int *c = new int[9];
-//     c = {1, 2, 3, 4, 5, 6, 7, 8};
-//     std::cout << c << std::endl;
-//     delete [] c;
-// }
-
 #define MAX_VAL 750
 int main(int, char**)
 {
@@ -35,6 +26,7 @@ int main(int, char**)
             return 1;
         }
     }
+
     try
     {
         numbers[-2] = 0;
@@ -51,10 +43,13 @@ int main(int, char**)
     {
         std::cerr << e.what() << '\n';
     }
+//Should catch 2 execptions (upper)
 
-    for (int i = 0; i < MAX_VAL; i++)
+    Array<int> test(5);
+    for (int i = 0; i < 5; i++)
     {
-        numbers[i] = rand();
+        test[i] = rand() % 3;
+        std::cout << test[i] << std::endl;
     }
     delete [] mirror;
     return 0;

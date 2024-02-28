@@ -17,6 +17,7 @@ int main( void )
     std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
     float e = 2.90f;
     float f = 2.9f;
+    std::cout << "e = " << e << ", f = " << f << std::endl;
     std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
     std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
     return 0;
