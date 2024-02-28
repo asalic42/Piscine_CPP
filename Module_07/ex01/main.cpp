@@ -24,4 +24,3 @@ int main(void)
     ::iter(float_array, 6, ::print_array);
     std::cout << "\n" << std::endl;
 }
-//Attention const !!

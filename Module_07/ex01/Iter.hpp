@@ -25,6 +25,13 @@ void    increment(T& array)
 };
 
 template <typename T>
+void    iter(const T* addr, int len, void (*func)(const T&))
+{
+    for (int i=0; i < len; i ++){
+        (func)(addr[i]);}
+};
+
+template <typename T>
 void    iter(T* addr, int len, void (*func)(T&))
 {
     for (int i=0; i < len; i ++){
