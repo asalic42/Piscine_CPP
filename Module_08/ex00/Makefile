@@ -1,7 +1,7 @@
 NAME 	 = easyfind
 CXX	 	 = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
-LIBS	 = Iter.hpp
+LIBS	 = easyfind.hpp
 
 SRCS	 = main.cpp
 OBJS_DIR  = obj

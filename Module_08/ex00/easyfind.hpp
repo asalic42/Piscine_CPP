@@ -17,19 +17,20 @@ class NotFoundException : public std::exception
 {
     public :
         virtual const char *what() const throw() {
-            return (RED "Occurence not found\n" NC);
+            return (RED "Occurence not found" NC);
         };
 };
 
 template <typename T>
-void    easyfind(T* type, int num)
+void    easyfind(T type, int num)
 {
-    for (int i=0; type[i]; i ++) {
+    for (unsigned int i=0; i < type.size(); i ++) {
         if (type[i] == num) { 
             std::cout << num << " has been found." << std::endl;
             return ;}
     }
     throw NotFoundException();
 }
+
 
 #endif
