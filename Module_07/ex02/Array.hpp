@@ -39,11 +39,11 @@ class Array
         class OutOfBoundsException : public std::exception {
             public :
                 virtual const char *what() const throw() {
-                    return (RED"Index is out of bounds\n"NC); }
+                    return (RED "Index is out of bounds\n" NC); }
         };
 
         T&   operator[](const unsigned int i) {
-            if (i < 0 || i >= this->size())
+            if (i >= this->size())
                 throw OutOfBoundsException();
             return (this->_elements[i]);
         };
