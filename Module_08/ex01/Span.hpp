@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <vector>
+# include <algorithm>
+# include <iterator>
 
 # define NC "\033[0m"
 # define RED "\033[31;1m"
@@ -13,15 +15,16 @@
 # define CYAN "\033[36;1m"
 # define WHITE "\033[37;1m"
 
+
 class Span
 {
     private :
-        std::vector<int> _tabInt;
-        unsigned int    _N;
+        unsigned int     N;
+        std::vector<int> tabInt;
     
     public :
         Span(void);
-        Span(unsigned int N);
+        Span(unsigned int _N);
         Span(const Span& copy);
         Span& operator=(const Span& bis);
         ~Span(void);
@@ -29,6 +32,10 @@ class Span
         void    addNumber(int number);
         int     shortestSpan(void);
         int     longestSpan(void);
+
+        void     printTabInt(void);
+
+        void    addSequenceNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
         class FullClassException : public std::exception
         {
