@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <vector>
+# include <algorithm>
 
 # define NC "\033[0m"
 # define RED "\033[31;1m"
@@ -24,13 +25,10 @@ class NotFoundException : public std::exception
 template <typename T>
 void    easyfind(T type, int num)
 {
-    for (unsigned int i=0; i < type.size(); i ++) {
-        if (type[i] == num) { 
-            std::cout << num << " has been found." << std::endl;
-            return ;}
-    }
-    throw NotFoundException();
-}
-
+    if (std::find(type.begin(), type.end(), num) == type.end())
+        throw NotFoundException();
+    else
+        std::cout << num << " has been found." << std::endl;
+};
 
 #endif

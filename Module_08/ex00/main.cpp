@@ -10,10 +10,8 @@ int main(void)
     tabInt.push_back(65);
 
     for (unsigned int i=0; i < tabInt.size(); i++){
-        std::cout << "Int value = " << tabInt[i] << " ";
+        std::cout << "Int value = " << tabInt[i] << std::endl;
     }
-
-    std::cout << std::endl;
     try{ ::easyfind(tabInt, 30);}
     catch (std::exception &e) {std::cout << e.what() << std::endl;};
 
