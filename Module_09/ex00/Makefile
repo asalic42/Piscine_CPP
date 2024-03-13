@@ -1,9 +1,9 @@
-NAME 	 = easyfind
+NAME 	 = btc
 CXX	 	 = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
-LIBS	 = easyfind.hpp
+LIBS	 = BitcoinExchange.hpp
 
-SRCS	 = main.cpp
+SRCS	 = main.cpp BitcoinExchange.cpp
 OBJS_DIR  = obj
 OBJS	 = $(addprefix $(OBJS_DIR)/, $(SRCS:%.cpp=%.o))
 
