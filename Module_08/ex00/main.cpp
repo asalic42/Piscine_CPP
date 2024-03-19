@@ -1,5 +1,7 @@
 #include "easyfind.hpp"
 
+#include <deque>
+
 int main(void)
 {
     std::vector<int> tabInt;

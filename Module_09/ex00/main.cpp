@@ -2,8 +2,15 @@
 
 int main(int ac, char *av[])
 {
+    char data[9] = "data.csv";
     if (ac != 2)
-        std::cerr << NOTOPEN << std::endl;
+        std::cerr << RED "\nError : could not open file.\n" NC << std::endl;
     else
-        BitcoinExchange btc("data.csv");
+    {
+        try {
+            BitcoinExchange btc(data);
+            btc.parseLine(av[1]); }
+        catch(std::exception &e)
+            { std::cout << e.what() << std::endl; }
+    }
 }
