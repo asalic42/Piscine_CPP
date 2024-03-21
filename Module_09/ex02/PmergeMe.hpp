@@ -5,6 +5,7 @@
 # include <list>
 # include <vector>
 # include <sstream>
+# include <ctime>
 
 # define NC "\033[0m"
 # define RED "\033[31;1m"
@@ -18,6 +19,7 @@ class PmergeMe
         PmergeMe& operator=(const PmergeMe& bis);
         ~PmergeMe(void);
 
+        void                executor(void);
         void                inputToVector(void);
         std::vector<int>    mergeVec(std::vector<int> vec);
         std::vector<int>    sortVec(std::vector<int> vec1, std::vector<int> vec2);
@@ -33,6 +35,8 @@ class PmergeMe
         std::string input;
         std::vector<int> _v;
         std::list<int>   _l;
+        double  time_vec;
+        double  time_list;
 };
 
 #endif

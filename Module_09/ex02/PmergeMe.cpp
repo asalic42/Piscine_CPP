@@ -2,13 +2,19 @@
 
 PmergeMe::PmergeMe(void) {}
 
-PmergeMe::PmergeMe(std::string& str) : input(str)
+PmergeMe::PmergeMe(std::string& str) : input(str) {}
+
+void    PmergeMe::executor(void)
 {
     inputToVector();
+    clock_t start = clock();
     _v = mergeVec(_v);
+    clock_t end = clock();
+    time_vec = double(end - start) / CLOCKS_PER_SEC * 1000000;
     std::cout << std::endl;
     for (std::vector<int>::const_iterator it = _v.begin(); it < _v.end(); it ++)
-        std::cout << *it << std::endl;
+        std::cout << *it <<  " ";
+    std::cout << "\nvector calculator => " << time_vec  << " us" << std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe& copy)

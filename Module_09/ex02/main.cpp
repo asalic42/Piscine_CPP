@@ -15,7 +15,7 @@ int main(int ac, char *av[])
                 input.append(" ");
         }
         PmergeMe instance(input);
-        
+        instance.executor();
     }
 }
 
