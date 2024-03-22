@@ -15,7 +15,6 @@
 # define CYAN "\033[36;1m"
 # define WHITE "\033[37;1m"
 
-
 class Span
 {
     private :

@@ -4,6 +4,7 @@
 # include <iostream>
 # include <vector>
 # include <algorithm>
+# include <deque>
 
 # define NC "\033[0m"
 # define RED "\033[31;1m"
@@ -23,9 +24,10 @@ class NotFoundException : public std::exception
 };
 
 template <typename T>
-void    easyfind(T type, int num)
+void    easyfind(T& type, int num)
 {
-    if (std::find(type.begin(), type.end(), num) == type.end())
+    typename T::const_iterator it = std::find(type.begin(), type.end(), num);
+    if (it == type.end())
         throw NotFoundException();
     else
         std::cout << num << " has been found." << std::endl;

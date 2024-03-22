@@ -34,13 +34,13 @@ int main()
     }
     catch (std::exception &e) {std::cout << e.what() << std::endl;}
 
-    std::cout << CYAN "\t-----[Check a good test]-----" NC << std::endl;
+    std::cout << CYAN "\t-----[Check correct test]-----" NC << std::endl;
 
     Span sp = Span(5);
-    sp.addNumber(6);
-    sp.addNumber(3);
+    sp.addNumber(1);
+    sp.addNumber(4);
     sp.addNumber(17);
-    sp.addNumber(9);
+    sp.addNumber(16);
     sp.addNumber(11000);
     sp.printTabInt();
     std::cout << sp.shortestSpan() << std::endl;

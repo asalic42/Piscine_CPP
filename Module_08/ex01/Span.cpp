@@ -36,20 +36,20 @@ void    Span::addNumber(int number)
 
 int    Span::shortestSpan(void)
 {
-    unsigned int j = 0;
     int short_nb=0;
     if (tabInt.size() < 2)
         throw NotEnoughNumbersException();
     std::vector<int> tmp = tabInt;
     std::sort(tmp.begin(), tmp.end());
-    for (unsigned int i=0; i < tabInt.size(); i++)
+    std::vector<int>::const_iterator ite = tmp.begin() +1;
+    for (std::vector<int>::const_iterator it = tmp.begin(); it < tmp.end(); it++)
     {
-        j = i +1;
-        while (j < tabInt.size())
+        ite = it +1;
+        while (ite < tmp.end())
         {
-            if (tmp[j] - tmp[i] < short_nb || short_nb == 0)
-                short_nb = tmp[j] - tmp[i];
-            j ++;
+            if (*ite - *it < short_nb || short_nb == 0)
+                short_nb = *ite - *it;
+            ite ++;
         }
     }
     return (short_nb);
