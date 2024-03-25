@@ -2,27 +2,14 @@
 
 PmergeMe::PmergeMe(void) {}
 
-PmergeMe::PmergeMe(std::string& str) : input(str) {}
-
-void    PmergeMe::executor(void)
-{
-    inputToVector();
-    clock_t start = clock();
-    _v = mergeVec(_v);
-    clock_t end = clock();
-    time_vec = double(end - start) / CLOCKS_PER_SEC * 1000000;
-    std::cout << std::endl;
-    for (std::vector<int>::const_iterator it = _v.begin(); it < _v.end(); it ++)
-        std::cout << *it <<  " ";
-    std::cout << "\nvector calculator => " << time_vec  << " us" << std::endl;
-}
+PmergeMe::PmergeMe(std::string& str) : _input(str) {}
 
 PmergeMe::PmergeMe(const PmergeMe& copy)
 {
     if (this != &copy)
     {
-        this->input  = copy.input;
-        this->_l = copy._l;
+        this->_v  = copy._v;
+        this->_d = copy._d;
     }
 }
 
@@ -30,63 +17,94 @@ PmergeMe&   PmergeMe::operator=(const PmergeMe& bis)
 {
     if (this != &bis)
     {
-        this->input = bis.input;
-        this->_l = bis._l;
+        this->_v = bis._v;
+        this->_d = bis._d;
     }
     return (*this);
 }
 
-void       PmergeMe::inputToVector(void)
+void    PmergeMe::monitor(void)
 {
-    std::stringstream iss(input);
-    int nb;
-    while (iss >> nb)
-        _v.push_back(nb);
-    for (std::vector<int>::const_iterator it=_v.begin(); it < _v.end(); it ++)
-        std::cout << *it << std::endl;
+    parseArgs();
+    clock_t startVector = clock();
+    _v = mergeInsertSort(_v);
+    clock_t stopVector = clock();
+    long time_vec = stopVector - startVector;
+
+    clock_t startDeque = clock();
+    _d = mergeInsertSort(_d);
+    clock_t stopDeque = clock();
+    long time_deq = stopDeque - startDeque;
+
+    std::cout << GREEN "======[VECTOR CONTAINER]======" NC << std::endl;
+    std::cout << WHITE "Before : " NC << _input << std::endl;
+    std::cout << WHITE "After : " NC ;
+    int sizeVector = 0;
+    for (std::vector<int>::iterator it = _v.begin(); it != _v.end(); it ++, sizeVector ++)
+        std::cout << *it << " ";
+    std::cout << WHITE"\nTime to process a range of " << sizeVector << " elements  : " NC << time_vec << " ms.\n" << std::endl;
+
+    std::cout << GREEN "======[DEQUE CONTAINER]======" NC << std::endl;
+    std::cout << WHITE "Before : " NC << _input << std::endl;
+    std::cout << WHITE "After : " NC ;
+    int sizeDeque = 0;
+    for (std::deque<int>::iterator it = _d.begin(); it != _d.end(); it ++, sizeDeque ++)
+        std::cout << *it << " ";
+    std::cout << WHITE"\nTime to process a range of " << sizeDeque << " elements : " NC << time_deq << " ms." << std::endl;
+    
 }
 
-std::vector<int>    PmergeMe::sortVec(std::vector<int> vec1, std::vector<int> vec2)
+void    PmergeMe::parseArgs(void)
 {
-    size_t i = 0;
-    size_t j = 0;
-    std::vector<int> result;
-    while (i < vec1.size() && j < vec2.size())
+    for (std::string::iterator it = _input.begin(); it != _input.end(); it++)
     {
-        if (vec1[i] < vec2[j])
-            result.push_back(vec1[i++]);
-        else
-            result.push_back(vec2[j++]);
+        if (!isdigit(*it) && *it != ' ')
+            throw WrongArgsException();
     }
-    for (;i < vec1.size(); ++i)
-        result.push_back(vec1[i]);
-    for (;j < vec2.size(); ++j)
-        result.push_back(vec2[j]);
-    return result;
+    std::stringstream iss(_input);
+    long int nb;
+    while (iss >> nb)
+    {
+        if (nb > INT_MAX)
+            throw WrongArgsException();
+        _v.push_back(nb);
+        _d.push_back(nb);
+    }
+    if (_v.empty() || _d.empty())
+        throw EmptyContainerException();
 }
 
-std::vector<int>    PmergeMe::mergeVec(std::vector<int> vec)
+template <typename T>
+T      PmergeMe::mergeInsertSort(T& container)
 {
-    if (vec.size() <= 1)
-        return (vec);
-    int mid = vec.size() / 2;
-    std::vector<int>::const_iterator itBegin = vec.begin();
-    std::vector <int>::const_iterator itHalfBegin = vec.begin();
-    std::advance(itHalfBegin, mid);
-
-    std::vector<int>::const_iterator itSecondHalf = vec.begin();
-    std::vector<int>::const_iterator itEnd = vec.end();
-    std::advance(itSecondHalf, mid);
-
-    std::vector<int> firstHalf;
-    for (std::vector<int>::const_iterator it = itBegin; it < itHalfBegin ; it ++)
-        firstHalf.push_back(*it);
-
-    std::vector<int> secondHalf;
-    for (std::vector<int>::const_iterator it = itSecondHalf; it < itEnd; it ++)
-        secondHalf.push_back(*it);
-    return (sortVec(mergeVec(firstHalf), mergeVec(secondHalf)));    
+    T tmpA;
+    T tmpB;
+    for (typename T::iterator it = container.begin(); it < container.end(); it += 2)
+    {
+        if (it+1 == container.end())
+            tmpB.push_back(*(it));
+        else if (*it >= *(it+1))
+        {
+            tmpB.push_back(*it);
+            tmpA.push_back(*(it +1));
+        }
+        else
+        {
+            tmpA.push_back(*it);
+            tmpB.push_back(*(it+1));
+        }
+    }
+    if (tmpA.size() > 1)
+        tmpA = mergeInsertSort(tmpA);
+    typename T::iterator ite;
+    while (tmpB.size())
+    {
+        ite = tmpA.begin();
+        for (; ite != tmpA.end() && *ite <= tmpB.back(); ite++) {}
+        tmpA.insert(ite, tmpB.back());
+        tmpB.pop_back();
+    }
+    return (tmpA);
 }
-
 
 PmergeMe::~PmergeMe(void) {}
