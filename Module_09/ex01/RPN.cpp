@@ -19,10 +19,13 @@ void RPN::reversePolishNotation(char *str)
 {
     char *token = strtok(str, " ");
     char *end;
+    int codon = 0;
     while (token != NULL)
     {
         if (strlen(token) == 1)
         {
+            if ((codon == 1 || codon == 2) && !isdigit(token[0]))
+                throw ErrorException();
             if (isdigit(token[0]))
                 pile.push(std::strtoll(token, &end, 10));
             else if (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/')
@@ -53,6 +56,7 @@ void RPN::reversePolishNotation(char *str)
         else
             throw ErrorException();
         token = strtok(NULL, " ");
+        codon ++;
     }
     if (pile.size() > 1 || pile.top() >= INT_MAX)
         throw ErrorException();
