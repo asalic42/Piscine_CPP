@@ -73,9 +73,7 @@ void    BitcoinExchange::parseLine(char *data)
                 std::map<std::string, float>::iterator it = mapBtc.upper_bound(date);
                 it --;
                 if (it != mapBtc.end())
-                {  
                     std::cout << date << " => " << value << " = " << mapBtc[it->first] * value << std::endl;
-                }
             }
             else
                 throw std::runtime_error(RED "Error: bad input => " + line + NC);
