@@ -26,15 +26,16 @@ PmergeMe&   PmergeMe::operator=(const PmergeMe& bis)
 void    PmergeMe::monitor(void)
 {
     parseArgs();
+
     clock_t startVector = clock();
     _v = mergeInsertSort(_v);
     clock_t stopVector = clock();
-    long time_vec = stopVector - startVector;
+    double time_vec = (static_cast<double>(stopVector - startVector) / CLOCKS_PER_SEC) * 1000000;
 
     clock_t startDeque = clock();
     _d = mergeInsertSort(_d);
     clock_t stopDeque = clock();
-    long time_deq = stopDeque - startDeque;
+    double time_deq = (static_cast<double>(stopDeque - startDeque) / CLOCKS_PER_SEC) * 1000000;
 
     std::cout << GREEN "======[VECTOR CONTAINER]======" NC << std::endl;
     std::cout << WHITE "Before : " NC << _input << std::endl;
@@ -51,7 +52,6 @@ void    PmergeMe::monitor(void)
     for (std::deque<int>::iterator it = _d.begin(); it != _d.end(); it ++, sizeDeque ++)
         std::cout << *it << " ";
     std::cout << WHITE"\nTime to process a range of " << sizeDeque << " elements : " NC << time_deq << " ms." << std::endl;
-    
 }
 
 void    PmergeMe::parseArgs(void)

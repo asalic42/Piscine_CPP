@@ -9,6 +9,7 @@
 # include <ctime>
 # include <climits>
 # include <algorithm>
+# include <sys/time.h>
 
 # define NC "\033[0m"
 # define RED "\033[31;1m"
