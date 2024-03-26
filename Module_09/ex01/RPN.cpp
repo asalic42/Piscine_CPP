@@ -17,7 +17,6 @@ RPN& RPN::operator=(const RPN& bis)
 
 void RPN::reversePolishNotation(char *str)
 {
-    int codon = 1;
     char *token = strtok(str, " ");
     char *end;
     while (token != NULL)
@@ -41,6 +40,8 @@ void RPN::reversePolishNotation(char *str)
                     case '*':
                         pile.push(nb2 * nb1); break;
                     case '/':
+                        if (nb1 == 0)
+                            throw ErrorException();
                         pile.push(nb2 / nb1); break;
                     default:
                         throw ErrorException();
@@ -51,7 +52,6 @@ void RPN::reversePolishNotation(char *str)
         }
         else
             throw ErrorException();
-        codon ++;
         token = strtok(NULL, " ");
     }
     if (pile.size() > 1 || pile.top() >= INT_MAX)

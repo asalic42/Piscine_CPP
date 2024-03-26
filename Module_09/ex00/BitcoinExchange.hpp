@@ -2,7 +2,6 @@
 # define BITCOIN_EXCHANGE_HPP
 
 # include <iostream>
-# include <vector>
 # include <algorithm>
 # include <fstream>
 # include <string>
